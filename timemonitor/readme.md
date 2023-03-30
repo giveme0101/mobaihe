@@ -1,5 +1,5 @@
 
-### Q: 魔百盒破解后开机时间不同步,视频软件不能用
+### Q: 限制魔百盒每天使用时间，到时间自动关机
 
 1. 魔百盒用ttl线连接电脑
     ```
@@ -53,11 +53,10 @@
     ```
 3. 修改build-linux.cmd的linux目标架构并执行，编辑为linux可执行程序
 4. 执行 "mount -rw -o remount /system" 重新挂载/system为可读写 
-5. 将编译后的"time_sync"文件复制到机顶盒 "/system/bin/timeSync.out" 下，
-   添加可执行权限 chmod +x timeSync.out
-6. 执行 "/system/bin/timeSync.out" 后打印日志系统时间更新成功
-7. 设置开机自启动脚本，修改 "/system/etc/init.kunlun.sh" 和 "/system/etc/init.sunniwell.sh" 文件,在末尾加上
+5. 将编译后的"time_monitor"文件复制到机顶盒 "/system/bin/timeMonitor.out" 下，
+   添加可执行权限 chmod +x timeMonitor.out
+6. 设置开机自启动脚本，修改 "/system/etc/init.kunlun.sh" 和 "/system/etc/init.sunniwell.sh" 文件,在末尾加上
     ```
-    # 更新时间
-    /system/bin/timeSync.out
+    # 限制魔百盒每天使用时间，到时间自动关机
+    /system/bin/timeMonitor.out
     ```
